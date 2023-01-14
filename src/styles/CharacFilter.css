@@ -1,0 +1,10 @@
+.dropdown {
+  margin-left: 40px;
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 541px) {
+  .dropdown {
+    margin-left: 5px;
+  }
+}

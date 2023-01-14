@@ -1,0 +1,41 @@
+.navbar {
+  height: 80px;
+}
+
+.navbar-title {
+  font-size: 35px !important;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  margin-left: 20vw;
+}
+
+.navbar-img {
+  width: 40px;
+  display: block;
+  z-index: 1040;
+  position: fixed;
+  margin: 0px auto;
+  top: 15px;
+
+}
+
+@media screen and (max-width: 541px) {
+  .navbar-title {
+    font-size: 5vw !important;
+    margin-left: 1px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-img {
+    width: 20px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .navbar-title {
+    margin-left: 5vw;
+  }
+
+}

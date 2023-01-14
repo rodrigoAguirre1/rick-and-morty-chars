@@ -1,0 +1,17 @@
+.figure {
+  min-width: 100px;
+  border: 1px solid rgb(172, 171, 171);
+  font-weight: bold;
+}
+
+.image {
+  min-width: 100px;
+  border-bottom: 1px solid rgb(172, 171, 171);
+}
+
+.name {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  
+}

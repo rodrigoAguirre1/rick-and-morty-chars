@@ -1,0 +1,16 @@
+.content2 {
+  margin-top: 100px;
+}
+
+.charact {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.go-home {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
