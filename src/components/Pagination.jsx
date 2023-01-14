@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Container from 'react-bootstrap/Container';
@@ -18,7 +18,7 @@ export function Pagination({ prev, next, onPrevious, onNext }) {
               <Button
                 className='button'
                 size='sm'
-                variant="secondary"
+                variant='secondary'
                 onClick={onPrevious}
               >Prev
               </Button>
@@ -28,7 +28,7 @@ export function Pagination({ prev, next, onPrevious, onNext }) {
               <Button
                 size='sm'
                 className='button'
-                variant="secondary"
+                variant='secondary'
                 onClick={onNext}
               >Next
               </Button>

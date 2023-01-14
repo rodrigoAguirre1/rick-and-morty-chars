@@ -6,8 +6,8 @@ import img from '../images/navbar.png';
 export function NavigationBar() {
 
   const popover = (
-    <Popover id="popover-basic">
-      <Popover.Header as="h3">Hello curious!</Popover.Header>
+    <Popover id='popover-basic'>
+      <Popover.Header as='h3'>HOO WEE, hello curious!</Popover.Header>
       <Popover.Body>
         Enter to my <strong>Curriculum Vitae</strong>:
         <br />
@@ -24,7 +24,7 @@ export function NavigationBar() {
     <Container fluid>
       <Row>
         <Col sm={9} md={9} lg={9} xl={9}>
-          <Navbar bg="dark" variant="dark" fixed='top' className='navbar'>
+          <Navbar bg='dark' variant='dark' fixed='top' className='navbar'>
             <Container>
               <Navbar.Brand className='navbar-title'>
                 Rick and Morty characters
@@ -33,12 +33,12 @@ export function NavigationBar() {
           </Navbar>
         </Col>
         <Col sm={3} md={3} lg={3} xl={3}>
-          <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+          <OverlayTrigger trigger='click' placement='bottom' overlay={popover}>
             <img
-              alt=""
+              alt=''
               src={img}
-              className="img-fluid roundedCircle mx-auto d-block navbar-img"
-              role="button"
+              className='img-fluid roundedCircle mx-auto d-block navbar-img'
+              role='button'
 
             />
           </OverlayTrigger>

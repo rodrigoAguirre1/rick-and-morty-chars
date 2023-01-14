@@ -24,18 +24,18 @@ export function CharacPage() {
     <>
       <NavigationBar />
       <Container className='content2'>
-      {character != null ? (
-        <Container className='charact'>
-          <CharCard character={character} />
-        </Container>
-      ) : ('Character not found')}
-      <NavLink to='/' className='go-home'>
-        <Button
-          size='sm'
-          variant="secondary">
-          Go Home
-        </Button>
-      </NavLink>
+        {character != null ? (
+          <Container className='charact'>
+            <CharCard character={character} />
+          </Container>
+        ) : ('Character not found')}
+        <NavLink to='/' className='go-home'>
+          <Button
+            size='sm'
+            variant='secondary'>
+            Go Home
+          </Button>
+        </NavLink>
       </Container>
     </>
 

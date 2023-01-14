@@ -8,8 +8,8 @@ import '../styles/Characters.css';
 
 export function Characters({ char }) {
   return (
-    <Container style={{ display: 'flex', justifyContent: 'center'}}>
-      <Row>        
+    <Container style={{ display: 'flex', justifyContent: 'center' }}>
+      <Row>
         {char.map(character => (
           <Col key={character.id}>
             <Figure className='figure'>
