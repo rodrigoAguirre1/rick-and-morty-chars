@@ -5,7 +5,8 @@
 }
 
 .image {
-  min-width: 100px;
+  min-width: 120px;
+  max-width: 125px;
   border-bottom: 1px solid rgb(172, 171, 171);
 }
 
@@ -13,5 +14,5 @@
   text-decoration: none;
   display: flex;
   justify-content: center;
-  
+  text-align: center;
 }

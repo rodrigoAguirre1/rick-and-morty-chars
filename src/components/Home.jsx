@@ -6,48 +6,37 @@ import { Pagination } from './Pagination';
 import { CharacFilter } from './CharacFilter';
 import Container from 'react-bootstrap/Container';
 import '../styles/Home.css';
+import { name } from '../conf/config';
+import { Loading } from './Loading';
 
 export function Home() {
-  const [characters, setCharacters] = useState(null)
-  const [info, setInfo] = useState(null)
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [nameFilter, setNameFilter] = useState('')
+  const [page, setPage] = useState(1)
 
-
-  const allCharacters = async (url) => {
-    const peticion = await axios.get(url)
-    setCharacters(peticion.data.results)
-    setInfo(peticion.data.info)
+  const allCharacters = async () => {
+    setLoading(true)
+    let url = `https://rickandmortyapi.com/api/character?page=${page}&name=${nameFilter}`
+    const request = await axios.get(url)
+    setData(request.data)
+    setLoading(false)
   }
 
   useEffect(() => {
-    allCharacters('https://rickandmortyapi.com/api/character')
-  }, [])
+    allCharacters()
+  }, [page, nameFilter])
 
-  const onPrevious = () => {
-    allCharacters(info.prev);
-  }
-
-  const onNext = () => {
-    allCharacters(info.next);
+  const prevPage = () => {
+    setPage(page - 1)
   }
 
-  /*     Filter Buttons      */
-  const ricks = () => {
-    allCharacters('https://rickandmortyapi.com/api/character/?name=rick');
+  const nextPage = () => {
+    setPage(page + 1)
   }
-  const mortys = () => {
-    allCharacters('https://rickandmortyapi.com/api/character/?name=morty');
-  }
-  const summers = () => {
-    allCharacters('https://rickandmortyapi.com/api/character/?name=summer');
-  }
-  const beths = () => {
-    allCharacters('https://rickandmortyapi.com/api/character/?name=beth');
-  }
-  const jerrys = () => {
-    allCharacters('https://rickandmortyapi.com/api/character/?name=jerry');
-  }
-  const remove = () => {
-    allCharacters('https://rickandmortyapi.com/api/character/');
+
+  const filtering = (num) => {
+    setNameFilter(name[num])
   }
 
   return (
@@ -55,30 +44,27 @@ export function Home() {
       <NavigationBar />
       <Container className='content'>
         <CharacFilter
-          ricks={ricks}
-          mortys={mortys}
-          summers={summers}
-          beths={beths}
-          jerrys={jerrys}
-          remove={remove}
+          filter={filtering}
         />
-        {characters != null ? (
-          <>
-            <Pagination
-              prev={info.prev}
-              next={info.next}
-              onPrevious={onPrevious}
-              onNext={onNext}
-            />
-            <Characters char={characters} />
-            <Pagination
-              prev={info.prev}
-              next={info.next}
-              onPrevious={onPrevious}
-              onNext={onNext}
-            />
-          </>
-        ) : ('No characters found')
+        {!loading ?
+          (data.results.length > 0) ?
+            (<>
+              {<Pagination
+                page={page}
+                nextPage={nextPage}
+                prevPage={prevPage}
+              />}
+              <Characters char={data.results} />
+              {<Pagination
+                page={page}
+                nextPage={nextPage}
+                prevPage={prevPage}
+              />}
+            </>)
+            :
+            ('No characters found')
+          :
+          (<Loading />)
         }
       </Container>
     </>

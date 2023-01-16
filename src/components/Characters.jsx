@@ -1,8 +1,5 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Figure from 'react-bootstrap/Figure';
+import { Container, Row, Col, Figure } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import '../styles/Characters.css';
 

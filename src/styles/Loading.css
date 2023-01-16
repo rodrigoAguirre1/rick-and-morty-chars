@@ -1,0 +1,14 @@
+.loading {
+  text-align: center;
+  color: rgb(75, 75, 75);
+}
+
+.div-spinner {
+  margin-top: 100px;
+}
+
+.spinner {
+  min-width: 60px;
+  min-height: 60px;
+  color: rgb(75, 75, 75);
+}

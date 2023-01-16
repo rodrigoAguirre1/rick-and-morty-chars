@@ -33,7 +33,7 @@ export function NavigationBar() {
           </Navbar>
         </Col>
         <Col sm={3} md={3} lg={3} xl={3}>
-          <OverlayTrigger trigger='click' placement='bottom' overlay={popover}>
+          <OverlayTrigger trigger='click' rootClose placement='bottom' overlay={popover}>
             <img
               alt=''
               src={img}
