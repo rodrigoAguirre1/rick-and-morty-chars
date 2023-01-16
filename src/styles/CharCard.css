@@ -1,0 +1,10 @@
+.carde,
+.card-title,
+.episod {
+  display: flex;
+  justify-content: center;
+}
+
+.episod2 {
+  margin-left: 0px;
+}
