@@ -7,4 +7,9 @@
 
 .episod2 {
   margin-left: 0px;
+  margin-top: 10px;
+}
+
+.char-img {
+  border-bottom: 1px solid rgb(211, 211, 211);
 }

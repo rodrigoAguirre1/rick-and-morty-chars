@@ -5,10 +5,10 @@ import '../styles/Characters.css';
 
 export function Characters({ char }) {
   return (
-    <Container style={{ display: 'flex', justifyContent: 'center' }}>
+    <Container>
       <Row>
         {char.map(character => (
-          <Col key={character.id}>
+          <Col key={character.id}  className='row-chars'>
             <Figure className='figure'>
               <Figure.Image
                 src={character.image}
@@ -16,7 +16,7 @@ export function Characters({ char }) {
                 alt={`Character with id: ${character.id}`}
               />
               <NavLink to={`/character/${character.id}`} className='name'>
-                <Figure.Caption>
+                <Figure.Caption className='names'>
                   {character.name}
                 </Figure.Caption>
               </NavLink>
@@ -24,7 +24,6 @@ export function Characters({ char }) {
           </Col>
         ))}
       </Row>
-
     </Container>
   )
 }

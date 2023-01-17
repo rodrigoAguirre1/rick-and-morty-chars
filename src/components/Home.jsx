@@ -43,12 +43,15 @@ export function Home() {
     <>
       <NavigationBar />
       <Container className='content'>
-        <CharacFilter
-          filter={filtering}
-        />
+        <Container style={{ position: 'sticky', top: '100px' }}>
+          <CharacFilter
+            filter={filtering}
+          />
+        </Container>
         {!loading ?
           (data.results.length > 0) ?
-            (<>
+            (<Container className='container-characters'>
+              <h2 className='title-characters'>Characters</h2>
               {<Pagination
                 page={page}
                 nextPage={nextPage}
@@ -60,7 +63,7 @@ export function Home() {
                 nextPage={nextPage}
                 prevPage={prevPage}
               />}
-            </>)
+            </Container>)
             :
             ('No characters found')
           :
