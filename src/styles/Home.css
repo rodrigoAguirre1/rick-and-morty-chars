@@ -1,3 +1,15 @@
 .content {
   margin-top: 80px;
 }
+.container-characters {
+  margin-top: 5px;
+  border: 1px solid gray;
+}
+
+.title-characters {
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration:underline;
+  margin-top: 5px;
+  color: rgb(88, 56, 56);
+}

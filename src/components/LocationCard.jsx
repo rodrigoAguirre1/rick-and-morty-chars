@@ -4,9 +4,9 @@ import '../styles/CharCard.css'
 
 export function LocationCard({ location }) {
   return (
-      <Card style={{ width: '22rem' }}>
+      <Card border='success'>
         <Card.Body>
-          <Card.Title className='card-title'>Location: "{location.name}"</Card.Title>
+          <Card.Title className='card-title'>Location: <br /> "{location.name}"</Card.Title>
         </Card.Body>
         <ListGroup className='list-group-flush'>
           <ListGroup.Item>Type: {location.type}.</ListGroup.Item>

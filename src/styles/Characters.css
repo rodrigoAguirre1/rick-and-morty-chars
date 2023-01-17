@@ -1,18 +1,31 @@
 .figure {
-  min-width: 100px;
+  width: 120px;
   border: 1px solid rgb(172, 171, 171);
   font-weight: bold;
 }
 
 .image {
-  min-width: 120px;
-  max-width: 125px;
+  width: 120px;
   border-bottom: 1px solid rgb(172, 171, 171);
 }
 
 .name {
   text-decoration: none;
+  text-align: center;
+}
+
+.name-title {
+  text-decoration: none;
+  text-align: center;
+  border-bottom: 1px solid gray;
+}
+
+.chars-conteiner {
+  border: 1px solid gray;
+  margin-bottom: 30px;
+}
+
+.row-chars {
   display: flex;
   justify-content: center;
-  text-align: center;
 }

@@ -9,8 +9,8 @@ export function CharCard({ character }) {
     <Container>
       <Row>
         <Col sm={12} md={12} lg={6} xl={6} className='carde'>
-          <Card style={{ width: '22rem' }}>
-            <Card.Img variant='top' src={character.image} />
+          <Card border='success'>
+            <Card.Img variant='top' src={character.image} className='char-img'/>
             <Card.Body>
               <Card.Title className='card-title'>{character.name}</Card.Title>
             </Card.Body>

@@ -27,7 +27,7 @@ export function NavigationBar() {
           <Navbar bg='dark' variant='dark' fixed='top' className='navbar'>
             <Container>
               <Navbar.Brand className='navbar-title'>
-                Rick and Morty characters
+                Rick and Morty 
               </Navbar.Brand>
             </Container>
           </Navbar>
