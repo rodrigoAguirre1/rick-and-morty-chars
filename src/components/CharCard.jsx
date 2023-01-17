@@ -15,11 +15,11 @@ export function CharCard({ character }) {
               <Card.Title className='card-title'>{character.name}</Card.Title>
             </Card.Body>
             <ListGroup className='list-group-flush'>
-              <ListGroup.Item>Status: {character.status}</ListGroup.Item>
-              <ListGroup.Item>Species: {character.species}</ListGroup.Item>
-              <ListGroup.Item>Gender: {character.gender}</ListGroup.Item>
+              <ListGroup.Item>Status: {character.status}.</ListGroup.Item>
+              <ListGroup.Item>Species: {character.species}.</ListGroup.Item>
+              <ListGroup.Item>Gender: {character.gender}.</ListGroup.Item>
               <ListGroup.Item>Location:  
-                <NavLink to='/Location' style={{ textDecoration: 'none' }}> {character.location.name}</NavLink>
+                <NavLink to={`/location/${character.location.name}`} style={{ textDecoration: 'none' }}> {character.location.name}</NavLink>.
               </ListGroup.Item>
             </ListGroup>
           </Card>
