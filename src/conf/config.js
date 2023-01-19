@@ -1,8 +1,22 @@
 export const name = [
-    'rick',
-    'morty',
-    'summer',
-    'beth',
-    'jerry',
-    ''
+  {
+    urlName: 'rick',
+    label: 'Ricks'
+  },
+  {
+    urlName: 'morty',
+    label: 'Mortys'
+  },
+  {
+    urlName: 'summer',
+    label: 'Summers'
+  },
+  {
+    urlName: 'beth',
+    label: 'Beths'
+  },
+  {
+    urlName: 'jerry',
+    label: 'Jerrys'
+  }
 ]
