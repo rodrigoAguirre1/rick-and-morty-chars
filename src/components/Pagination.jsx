@@ -2,9 +2,13 @@ import React from 'react';
 import { Button, ButtonGroup, Container, Row, Col } from 'react-bootstrap';
 import '../styles/Pagination.css';
 
-export function Pagination({ page, nextPage, prevPage }) {
+export function Pagination({ page, nextPage, prevPage, pages }) {
 
-  if (page < 2) {
+  if ((page == pages) && (page < 2)) {
+    return (
+      <Container />
+    )
+  } else if ((page < 2) && (page < pages)) {
     return (
       <Container>
         <Row>
@@ -24,7 +28,7 @@ export function Pagination({ page, nextPage, prevPage }) {
         </Row>
       </Container>
     )
-  } else if (page > 41) {
+  } else if ((page >= pages) && (page > 1)) {
     return (
       <Container>
         <Row>

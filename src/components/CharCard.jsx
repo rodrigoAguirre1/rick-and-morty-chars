@@ -1,14 +1,16 @@
 import React from 'react';
-import { Card, Col, Container, ListGroup, Row, Dropdown } from 'react-bootstrap';
+import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import '../styles/CharCard.css'
+import '../styles/CharCard.css';
+import { CharEpisodes } from './CharEpisodes';
+
 
 export function CharCard({ character }) {
 
   return (
     <Container>
       <Row>
-        <Col sm={12} md={12} lg={6} xl={6} className='carde'>
+        <Col sm={12} md={12} lg={5} xl={5} className='carde'>
           <Card border='success'>
             <Card.Img variant='top' src={character.image} className='char-img'/>
             <Card.Body>
@@ -24,19 +26,10 @@ export function CharCard({ character }) {
             </ListGroup>
           </Card>
         </Col>
-        <Col sm={12} md={12} lg={4} xl={4} className='episod'>
-          <Dropdown className='episod2'>
-            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-              Episodes where this<br /> caracter appears
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              {character.episode.map(name => (
-                <Dropdown.ItemText>Episode: {name.substr(40, 41)}</Dropdown.ItemText>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
+        <Col sm={12} md={12} lg={6} xl={6} className='episod'>
+          <CharEpisodes char={character} />  
         </Col>
-        <Col sm={12} md={12} lg={2} xl={2} />
+        <Col sm={12} md={12} lg={1} xl={1} />
       </Row>
     </Container>
   );

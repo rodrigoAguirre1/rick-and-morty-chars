@@ -6,8 +6,8 @@ import { Pagination } from './Pagination';
 import { CharacFilter } from './CharacFilter';
 import Container from 'react-bootstrap/Container';
 import '../styles/Home.css';
-import { name } from '../conf/config';
 import { Loading } from './Loading';
+import { HomeError } from './HomeError';
 
 export function Home() {
   const [data, setData] = useState(null)
@@ -17,10 +17,15 @@ export function Home() {
 
   const allCharacters = async () => {
     setLoading(true)
-    let url = `https://rickandmortyapi.com/api/character?page=${page}&name=${nameFilter}`
-    const request = await axios.get(url)
-    setData(request.data)
-    setLoading(false)
+    try {
+      let url = `https://rickandmortyapi.com/api/character?page=${page}&name=${nameFilter}`
+      const request = await axios.get(url)
+      setData(request.data)
+      setLoading(false)
+    }
+    catch {
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -35,37 +40,43 @@ export function Home() {
     setPage(page + 1)
   }
 
-  const filtering = (num) => {
-    setNameFilter(name[num])
+  const filtering = (name) => {
+    setPage(1)
+    setNameFilter(name)
   }
 
   return (
     <>
       <NavigationBar />
       <Container className='content'>
-        <Container style={{ position: 'sticky', top: '100px' }}>
-          <CharacFilter
-            filter={filtering}
-          />
-        </Container>
         {!loading ?
           (data.results.length > 0) ?
-            (<Container className='container-characters'>
-              <h2 className='title-characters'>Characters</h2>
-              {<Pagination
-                page={page}
-                nextPage={nextPage}
-                prevPage={prevPage}
-              />}
-              <Characters char={data.results} />
-              {<Pagination
-                page={page}
-                nextPage={nextPage}
-                prevPage={prevPage}
-              />}
-            </Container>)
+            (<>
+              <Container style={{ position: 'sticky', top: '100px' }}>
+                <CharacFilter filter={filtering} />
+              </Container>
+              <Container className='container-characters'>
+                <h2 className='title-characters'>Characters</h2>
+                {<Pagination
+                  page={page}
+                  nextPage={nextPage}
+                  prevPage={prevPage}
+                  pages={data.info.pages}
+                />}
+                <Characters char={data.results} />
+                {<Pagination
+                  page={page}
+                  nextPage={nextPage}
+                  prevPage={prevPage}
+                  pages={data.info.pages}
+                />}
+              </Container>
+            </>
+            )
             :
-            ('No characters found')
+            (
+              <HomeError />
+            )
           :
           (<Loading />)
         }
