@@ -15,7 +15,7 @@ export function NavigationBar() {
           target='_blank'
           rel='noopener noreferrer'>
           www.rodrigoaguirre.com
-        </a>
+        </a>                    
       </Popover.Body>
     </Popover>
   );
@@ -39,10 +39,8 @@ export function NavigationBar() {
               src={img}
               className='img-fluid roundedCircle mx-auto d-block navbar-img'
               role='button'
-
             />
           </OverlayTrigger>
-
         </Col>
       </Row>
     </Container>
