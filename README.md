@@ -4,4 +4,4 @@ This is an application where you can find the different characters from the "Ric
 
 You can also access specific data for each one.
 
-The page is located at: rickandmorty.rodrigoaguirre.com
+The page is located at: https://rickandmorty.rodrigoaguirre.com 
