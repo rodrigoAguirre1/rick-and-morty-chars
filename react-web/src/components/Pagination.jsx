@@ -4,7 +4,7 @@ import '../styles/Pagination.css';
 
 export function Pagination({ page, nextPage, prevPage, pages }) {
 
-  if ((page == pages) && (page < 2)) {
+  if ((page === pages) && (page < 2)) {
     return (
       <Container />
     )
