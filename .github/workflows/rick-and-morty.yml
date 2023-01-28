@@ -22,7 +22,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Change folder
-        run: cd ./react-web/
+        run: cd ./react-web/ && pwd
 
       # - name: Install dependencies
       #   run: npm install
