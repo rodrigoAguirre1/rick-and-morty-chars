@@ -23,12 +23,15 @@ jobs:
 
       - name: Change folder
         run: cd ./react-web && npm i && npm run build
+      
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: test-deploy
+          folder: build
 
-      # - name: Install dependencies
-      #   run: npm install
 
-      # - name: Build
-      #   run: npm run build
 
       # - run: cd ../terraform
 
