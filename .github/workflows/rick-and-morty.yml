@@ -6,7 +6,7 @@ on:
 
 jobs: 
   build:
-    working-directory: react-web
+
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,7 +24,8 @@ jobs:
 
       - name: Build
         run: npm i && npm run build
-      
+          working-directory: react-web
+          
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
