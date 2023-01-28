@@ -22,13 +22,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Change folder
-        run: cd ./react-web && ls
+        run: cd ./react-web && npm run build
 
       # - name: Install dependencies
       #   run: npm install
 
-      - name: Build
-        run: npm run build
+      # - name: Build
+      #   run: npm run build
 
       # - run: cd ../terraform
 
