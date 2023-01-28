@@ -24,8 +24,8 @@ jobs:
       - name: Change folder
         run: cd ./react-web
 
-      - name: Install dependencies
-        run: npm install
+      # - name: Install dependencies
+      #   run: npm install
 
       - name: Build
         run: npm i && npm run build
