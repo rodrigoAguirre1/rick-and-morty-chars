@@ -6,6 +6,7 @@ on:
 
 jobs: 
   build:
+    working-directory: rect-web
     runs-on: ubuntu-latest
 
     strategy:
@@ -21,8 +22,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Change folder
-        run: cd ./react-web && npm i && npm run build
+      - name: Build
+        run: npm i && npm run build
       
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
