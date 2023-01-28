@@ -6,7 +6,7 @@ on:
 
 jobs: 
   build:
-    working-directory: rect-web
+    working-directory: react-web
     runs-on: ubuntu-latest
 
     strategy:
