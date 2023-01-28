@@ -8,6 +8,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: /react-web
 
     strategy:
       matrix:
@@ -24,8 +27,7 @@ jobs:
 
       - name: Build
         run: npm i && npm run build
-          working-directory: react-web
-          
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
