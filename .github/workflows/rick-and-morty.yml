@@ -47,7 +47,6 @@ jobs:
         
  
       - name: Configure AWS credentials from AWS account
-        working-directory: terraform
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: ${{ secrets.AWS_ROLE }}
