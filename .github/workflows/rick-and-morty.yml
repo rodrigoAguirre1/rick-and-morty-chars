@@ -4,12 +4,10 @@ on:
     branches: [ 'deploy' ]
   pull_request:
 
-
 permissions:
   id-token: write
   contents: read
   pull-requests: write
-
 
 env:
   TF_LOG: INFO
@@ -44,11 +42,8 @@ jobs:
         run: npm i && npm run build
         if: github.event_name == 'push'
 
-
       # terraform code
 
-        
- 
       - name: Configure AWS credentials from AWS account
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -121,23 +116,3 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve -input=false
-
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
