@@ -46,7 +46,7 @@ jobs:
           aws-profile: ${{ secrets.AWS_PROFILE }}
           aws-access-key-id: ${{ secrets.YOUR_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.YOUR_SECRET_ACCESS_KEY }}
-          role-session-name: GitHub-OIDC-TERRAFORM 
+          role-session-name: cv-terraform-tfstate-role 
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
