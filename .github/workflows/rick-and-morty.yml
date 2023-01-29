@@ -17,12 +17,10 @@ env:
 
 jobs: 
   build:
-    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: react-web
-
+        shell: bash
     strategy:
       matrix:
         node-version: [18.x]
@@ -36,35 +34,39 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Build
-        run: pwd && npm i && npm run build
+      # npm run build 
 
-  deploy:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: terraform
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Build
+        working-directory: react-web
+        run: npm i && npm run build
+        if: github.event_name == 'push'
+
+
+      # terraform code
+
+        
+ 
       - name: Configure AWS credentials from AWS account
+        working-directory: terraform
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: ${{ secrets.AWS_ROLE }}
           aws-region: ${{ secrets.AWS_REGION }}
           role-session-name: GitHub-OIDC-TERRAFORM 
       - name: Setup Terraform
+        working-directory: terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.2.5
 
       - name: Terraform fmt
+        working-directory: terraform
         id: fmt
         run: terraform fmt -check
         continue-on-error: true
 
       - name: Terraform Init
+        working-directory: terraform
         id: init
         env:
           AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
@@ -72,10 +74,12 @@ jobs:
         run: terraform init -backend-config="bucket=${AWS_BUCKET_NAME}" -backend-config="key=${AWS_BUCKET_KEY_NAME}" -backend-config="region=${AWS_REGION}"
 
       - name: Terraform Validate
+        working-directory: terraform
         id: validate
         run: terraform validate -no-color
 
       - name: Terraform Plan
+        working-directory: terraform
         id: plan
         run: terraform plan -no-color
         if: github.event_name == 'pull_request'
