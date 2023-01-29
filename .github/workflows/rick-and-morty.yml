@@ -53,7 +53,6 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
           role-session-name: GitHub-OIDC-TERRAFORM 
       - name: Setup Terraform
-        working-directory: terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.2.5
