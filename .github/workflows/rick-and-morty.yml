@@ -44,22 +44,24 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE }}
           aws-region: ${{ secrets.AWS_REGION }}
           aws-profile: ${{ secrets.AWS_PROFILE }}
-          aws-access-key-id: ${{ secrets.YOUR_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.YOUR_SECRET_ACCESS_KEY }}
           role-session-name: cv-terraform-tfstate-role 
+        if: github.event_name == 'pull_request'
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.2.5
+        if: github.event_name == 'pull_request'
 
       - name: Terraform fmt
         working-directory: terraform
         id: fmt
         run: terraform fmt -check
         continue-on-error: true
+        if: github.event_name == 'pull_request'
 
       - name: Terraform Init
+        if: github.event_name == 'pull_request'
         working-directory: terraform
         id: init
         env:
@@ -71,10 +73,15 @@ jobs:
         working-directory: terraform
         id: validate
         run: terraform validate -no-color
+        if: github.event_name == 'pull_request'
 
       - name: Terraform Plan
         working-directory: terraform
         id: plan
+        env:
+          AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_PROFILE: ${{ secrets.AWS_PROFILE }}
         run: terraform plan -no-color
         if: github.event_name == 'pull_request'
         continue-on-error: true
