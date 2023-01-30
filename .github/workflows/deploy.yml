@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     defaults:
-      working-directory: react-web
+      run:
+        working-directory: react-web
 
     steps:
       - name: Checkout
