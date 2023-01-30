@@ -45,7 +45,7 @@ jobs:
           role-session-name: cv-terraform-tfstate-role 
           aws-region: ${{ secrets.AWS_REGION }}
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         if: github.event_name == 'pull_request'
 
       - name: Setup Terraform
