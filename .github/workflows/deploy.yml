@@ -1,7 +1,7 @@
 name: Build and Deploy to S3 bucket
 
 on:
-  pull_requests:
+  pull_request:
 
 permissions:
   id-token: write
