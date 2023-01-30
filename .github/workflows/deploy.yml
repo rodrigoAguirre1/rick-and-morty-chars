@@ -1,0 +1,41 @@
+name: Build and Deploy to S3 bucket
+
+on:
+  pull_requests:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    defaults:
+      working-directory: react-web
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '18.x'
+      
+      - name: Build action
+        run: npm i && npm run build
+
+      - name: Copy build to S3
+        run: |
+          aws s3 sync --delete ./build s3://${{ secrets.AWS_BUCKET_NAME }}/
+
+      - name: Invalidate the cache
+        run: |          
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.DIST_ID }} --paths /index.html
