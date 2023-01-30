@@ -46,17 +46,6 @@ data "aws_iam_policy_document" "s3_policy" {
   }
 }
 
-#Export static web files to the bucket.
-# resource "aws_s3_object" "rickandmorty_bucket" {
-#   for_each = fileset("${path.module}/../react-web/build", "**")
-
-#   bucket       = aws_s3_bucket.rickandmorty_bucket.id
-#   key          = each.value
-#   source       = "${path.module}/../react-web/build/${each.value}"
-#   etag         = filemd5("${path.module}/../react-web/build/${each.value}")
-#   content_type = lookup(local.mime_types, regex("\\.[^.]+$", each.value), null)
-# }
-
 ################################################################################
 # Cloudfront distribution
 ################################################################################
